@@ -17,4 +17,4 @@ scipy==1.5.1
 six==1.15.0
 streamlit==0.62.1
 urllib3==1.25.9
-math==3.11.2
+math
