@@ -5,7 +5,7 @@ idna
 kiwisolver
 lxml
 matplotlib
-numpy ==1.20.0
+numpy ==1.19.5
 pandas
 pyparsing
 math
