@@ -7,6 +7,7 @@ Created on Fri Feb 24 14:35:41 2023
 
 # Third party imports
 import numpy as np
+import scipy 
 from scipy.stats import norm 
 
 # Local package imports
