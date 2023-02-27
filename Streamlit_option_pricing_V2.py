@@ -20,6 +20,7 @@ from AmericanPricing import AmericanPricing
 from ticker import Ticker
 import base
 
+st.sidebar.title("Equity Option Pricing Calculators")
 
 class OPTION_PRICING_MODEL(Enum):
     BLACK_SCHOLES = 'Black Scholes Model'
@@ -184,12 +185,9 @@ elif pricing_method == OPTION_PRICING_MODEL.BINOMIAL.value:
         st.subheader(f'Call option price: {call_option_price}')
         st.subheader(f'Put option price: {put_option_price}')
         
-st.sidebar.subheader("About")
+st.sidebar.subheader("App by gil De La Cruz Vazquez")
 st.sidebar.markdown(
     """
-    <div style='font-size:15px'>
-    App by Gil De La Cruz Vazquez
-    
     
     
     For additional information please contact at:
