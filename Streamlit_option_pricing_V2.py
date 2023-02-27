@@ -184,7 +184,24 @@ elif pricing_method == OPTION_PRICING_MODEL.BINOMIAL.value:
         st.subheader(f'Call option price: {call_option_price}')
         st.subheader(f'Put option price: {put_option_price}')
         
-st.sidebar.subheader("Contact Information")
-st.sidebar.text("For questions or feedback, please contact at:")
-st.sidebar.text("Code by Gil De La Cruz Vazquez")
-st.sidebar.text("Email: gildelacruzvazquez@gmail.com")
+st.sidebar.subheader("About")
+st.sidebar.markdown(
+    """
+    <div style='font-size:14px'>
+    App by Gil De La Cruz Vazquez
+       
+    For additional information please contact at:
+        https://www.linkedin.com/in/gil-de-la-cruz-vazquez-62049b125/
+    
+    GitHub code:
+        https://github.com/gdelacruzv/Option_Pricing_App
+        
+    <div style='font-size:10px'>    
+         Disclaimer:     
+          Price information is pulled from Yahoo Finance. The Content in this site is for informational purposes only, 
+         you should not construe any such information or other material as legal, tax, 
+         investment, financial, or other advice.
+    </div>
+    """,
+    unsafe_allow_html=True
+)
