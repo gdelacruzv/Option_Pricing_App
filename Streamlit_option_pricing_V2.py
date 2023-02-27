@@ -184,7 +184,7 @@ elif pricing_method == OPTION_PRICING_MODEL.BINOMIAL.value:
         st.subheader(f'Call option price: {call_option_price}')
         st.subheader(f'Put option price: {put_option_price}')
         
-st.sidebar.subheader("About", style="font-size: 18px")
+st.sidebar.subheader("About")
 st.sidebar.markdown(
     """
     <div style='font-size:15px'>
