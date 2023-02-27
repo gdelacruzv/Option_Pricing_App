@@ -184,16 +184,20 @@ elif pricing_method == OPTION_PRICING_MODEL.BINOMIAL.value:
         st.subheader(f'Call option price: {call_option_price}')
         st.subheader(f'Put option price: {put_option_price}')
         
-st.sidebar.subheader("About")
+st.sidebar.subheader("About", style="font-size: 18px")
 st.sidebar.markdown(
     """
-    <div style='font-size:14px'>
+    <div style='font-size:15px'>
     App by Gil De La Cruz Vazquez
-       
+    
+    
+    
     For additional information please contact at:
+        <div style='font-size:12px'>
         https://www.linkedin.com/in/gil-de-la-cruz-vazquez-62049b125/
     
     GitHub code:
+        <div style='font-size:12px'>
         https://github.com/gdelacruzv/Option_Pricing_App
         
     <div style='font-size:10px'>    
@@ -205,3 +209,4 @@ st.sidebar.markdown(
     """,
     unsafe_allow_html=True
 )
+  
