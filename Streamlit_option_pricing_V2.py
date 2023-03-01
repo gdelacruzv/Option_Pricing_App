@@ -159,7 +159,6 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
         ax2.set_xlim(left=strike_price_list[0], right=strike_price_list[-1])
         st.pyplot()    
      
-    print        
         
         
         
