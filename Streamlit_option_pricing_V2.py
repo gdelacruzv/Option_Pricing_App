@@ -87,7 +87,7 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
     risk_free_rate = st.slider('Risk-free rate (%)', 0, 100, 10)
     sigma = st.slider('Sigma (%)', 0, 100, 20)
     exercise_date = st.date_input('Exercise date', min_value=datetime.today() + timedelta(days=1), value=datetime.today() + timedelta(days=365))
-    number_of_simulations = st.slider('Number of simulations', 100, 100000, 10000)
+    number_of_simulations = st.slider('Number of simulations', 10000, 10000, 10000)
     
 
     if st.button(f'Calculate option price for {ticker}'):
