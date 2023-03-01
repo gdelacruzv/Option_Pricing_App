@@ -119,7 +119,7 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
         amer_res = np.array([])
         euro_res_put = np.array([])
         amer_res_put = np.array([])
-        strike_price_list = np.arange(strike_price*.50, strike_price*1.50,strike_price*.10 )
+        strike_price_list = np.arange(strike_price*.50, strike_price*1.50,strike_price*.20 )
 
         for strike_price_range in strike_price_list:
             AP_range = AmericanPricing(spot_price, strike_price_range, days_to_maturity, risk_free_rate, sigma, number_of_simulations)
