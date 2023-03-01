@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 """
 Created on Fri Feb 24 14:39:13 2023
 
 @author: Gilberto
 """
-
 # Standart python imports
 from enum import Enum
 from datetime import datetime, timedelta
@@ -22,10 +20,10 @@ import base
 import io
 import numpy as np
 import matplotlib.pyplot as plt
-
-
-
 st.sidebar.title("Equity Option Pricing Calculators")
+
+
+
 
 class OPTION_PRICING_MODEL(Enum):
     BLACK_SCHOLES = 'Black Scholes Model'
@@ -107,8 +105,7 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
 
         # ESimulating stock movements
         AP = AmericanPricing(spot_price, strike_price, days_to_maturity, risk_free_rate, sigma, number_of_simulations)
-      
-
+        
         # Calculating call/put option price
         call_option_price = AP._calculate_option_price('Call Option')
         put_option_price = AP._calculate_option_price('Put Option')
@@ -116,13 +113,13 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
         # Displaying call/put option price
         st.subheader(f'Call option price: {call_option_price}')
         st.subheader(f'Put option price: {put_option_price}')
-
-         # Visualizing Option pricing Simulation
+        
+        # Visualizing Monte Carlo Simulation
         euro_res = np.array([])
         amer_res = np.array([])
         euro_res_put = np.array([])
         amer_res_put = np.array([])
-        strike_price_list = np.arange(strike_price*.10, strike_price*1.50,strike_price*.10 )
+        strike_price_list = np.arange(strike_price*.10, strike_price*1.50,strike_price*.20 )
 
         for strike_price_range in strike_price_list:
             AP_range = AmericanPricing(spot_price, strike_price_range, days_to_maturity, risk_free_rate, sigma, number_of_simulations)
@@ -160,10 +157,13 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
         ax2.set_xlabel('Strike Price')
         ax2.set_ylabel('Early Exercise Premium (%)')
         ax2.set_xlim(left=strike_price_list[0], right=strike_price_list[-1])
-        st.pyplot()
+        st.pyplot()    
+     
+    print        
         
         
         
+
 elif pricing_method == OPTION_PRICING_MODEL.MONTE_CARLO.value:
     # Parameters for Monte Carlo simulation
     ticker = st.text_input('Ticker symbol', 'AAPL')
@@ -234,7 +234,9 @@ elif pricing_method == OPTION_PRICING_MODEL.BINOMIAL.value:
         st.subheader(f'Call option price: {call_option_price}')
         st.subheader(f'Put option price: {put_option_price}')
         
-st.sidebar.subheader("App by gil De La Cruz Vazquez")
+
+  
+st.sidebar.subheader("App by Gil De La Cruz Vazquez")
 st.sidebar.markdown(
     """
     
