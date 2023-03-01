@@ -19,6 +19,11 @@ from BinomialTreeModel import BinomialTreeModel
 from AmericanPricing import AmericanPricing
 from ticker import Ticker
 import base
+import io
+import numpy as np
+import matplotlib.pyplot as plt
+
+
 
 st.sidebar.title("Equity Option Pricing Calculators")
 
