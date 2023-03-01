@@ -113,6 +113,7 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
         # Displaying call/put option price
         st.subheader(f'Call option price: {call_option_price}')
         st.subheader(f'Put option price: {put_option_price}')
+        st.subheader('Give option premiuns a few momments to load')
         
         # Visualizing Monte Carlo Simulation
         euro_res = np.array([])
