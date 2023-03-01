@@ -102,10 +102,7 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
 
         # ESimulating stock movements
         AP = AmericanPricing(spot_price, strike_price, days_to_maturity, risk_free_rate, sigma, number_of_simulations)
-       
-        # Visualizing Monte Carlo Simulation
-        #AP.plot_simulation_results(num_of_movements)
-        #st.pyplot()
+      
 
         # Calculating call/put option price
         call_option_price = AP._calculate_option_price('Call Option')
@@ -115,6 +112,53 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
         st.subheader(f'Call option price: {call_option_price}')
         st.subheader(f'Put option price: {put_option_price}')
 
+         # Visualizing Option pricing Simulation
+        euro_res = np.array([])
+        amer_res = np.array([])
+        euro_res_put = np.array([])
+        amer_res_put = np.array([])
+        strike_price_list = np.arange(strike_price*.10, strike_price*1.50,strike_price*.10 )
+
+        for strike_price_range in strike_price_list:
+            AP_range = AmericanPricing(spot_price, strike_price_range, days_to_maturity, risk_free_rate, sigma, number_of_simulations)
+            MC_range = MonteCarloPricing(spot_price, strike_price_range, days_to_maturity, risk_free_rate, sigma, number_of_simulations)
+            MC_range.simulate_prices()
+            euro_res = np.append(euro_res, MC_range._calculate_option_price('Call Option'))
+            amer_res = np.append(amer_res, AP_range._calculate_call_option_price())
+            euro_res_put = np.append(euro_res_put, MC_range._calculate_option_price('Put Option'))
+            amer_res_put = np.append(amer_res_put, AP_range._calculate_put_option_price())
+        
+        euro_res = np.array(euro_res)
+        amer_res = np.array(amer_res)
+        euro_res_put = np.array(euro_res_put)
+        amer_res_put = np.array(amer_res_put)
+
+        fig, (ax1, ax2) = plt.subplots(2,1, sharex=True, figsize=(10, 6))
+        ax1.plot(strike_price_list, euro_res, 'b', label='European Call')
+        ax1.plot(strike_price_list, amer_res, 'ro', label='American Call')
+        ax1.set_ylabel('Call Option Value')
+        ax1.legend(loc=0)
+        wi = 1.0
+        ax2.bar(strike_price_list - wi/2, (amer_res - euro_res)/euro_res*100, wi)
+        ax2.set_xlabel('Strike Price')
+        ax2.set_ylabel('Early Exercise Premium (%)')
+        ax2.set_xlim(left=strike_price_list[0], right=strike_price_list[-1])
+        st.pyplot()
+    
+        fig, (ax1, ax2) = plt.subplots(2,1, sharex=True, figsize=(10, 6))
+        ax1.plot(strike_price_list, euro_res_put, 'b', label='European Put')
+        ax1.plot(strike_price_list, amer_res_put, 'ro', label='American Put')
+        ax1.set_ylabel('Put Option Value')
+        ax1.legend(loc=0)
+        wi = 1.0
+        ax2.bar(strike_price_list - wi/2, (amer_res_put - euro_res_put)/euro_res_put*100, wi)
+        ax2.set_xlabel('Strike Price')
+        ax2.set_ylabel('Early Exercise Premium (%)')
+        ax2.set_xlim(left=strike_price_list[0], right=strike_price_list[-1])
+        st.pyplot()
+        
+        
+        
 elif pricing_method == OPTION_PRICING_MODEL.MONTE_CARLO.value:
     # Parameters for Monte Carlo simulation
     ticker = st.text_input('Ticker symbol', 'AAPL')
