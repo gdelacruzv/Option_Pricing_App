@@ -138,7 +138,7 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
         fig, (ax1, ax2) = plt.subplots(2,1, sharex=True, figsize=(10, 6))
         ax1.plot(strike_price_list, euro_res, 'b', label='European Call')
         ax1.plot(strike_price_list, amer_res, 'ro', label='American Call')
-        ax1.set_ylabel('Call Option Value')
+        ax1.set_ylabel('Put Option Value')
         ax1.legend(loc=0)
         wi = 1.0
         ax2.bar(strike_price_list - wi/2, (amer_res - euro_res)/euro_res*100, wi)
@@ -150,7 +150,7 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
         fig, (ax1, ax2) = plt.subplots(2,1, sharex=True, figsize=(10, 6))
         ax1.plot(strike_price_list, euro_res_put, 'b', label='European Put')
         ax1.plot(strike_price_list, amer_res_put, 'ro', label='American Put')
-        ax1.set_ylabel('Put Option Value')
+        ax1.set_ylabel('Call Option Value')
         ax1.legend(loc=0)
         wi = 1.0
         ax2.bar(strike_price_list - wi/2, (amer_res_put - euro_res_put)/euro_res_put*100, wi)
