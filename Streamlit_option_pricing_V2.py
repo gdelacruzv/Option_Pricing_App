@@ -141,7 +141,7 @@ elif pricing_method == OPTION_PRICING_MODEL.AMERICAN.value:
         ax1.set_ylabel('Call Option Value')
         ax1.legend(loc=0)
         wi = 1.0
-        ax2.bar(strike_price_list - wi/2, (amer_res - euro_res)/euro_res*100, wi)
+        ax2.bar(strike_price_list - wi/2, (euro_res - amer_res)/euro_res*100, wi)
         ax2.set_xlabel('Strike Price')
         ax2.set_ylabel('Early Exercise Premium (%)')
         ax2.set_xlim(left=strike_price_list[0], right=strike_price_list[-1])
