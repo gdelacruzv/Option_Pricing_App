@@ -31,7 +31,7 @@ class OPTION_PRICING_MODEL(Enum):
     BINOMIAL = 'Binomial Model'
     AMERICAN = 'American option LSM Model'
 
-@st.cache
+@st.cache_data
 def get_historical_data(ticker):
     """Getting historical data for speified ticker and caching it with streamlit app."""
     return Ticker.get_historical_data(ticker)
